@@ -33,10 +33,10 @@
 static NSString* stringFromClass(Class theClass)
 {
     static NSMapTable *map = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        map = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory valueOptions:NSPointerFunctionsStrongMemory];
-    });
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     map = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory valueOptions:NSPointerFunctionsStrongMemory];
+    // });
     
     NSString *string = [map objectForKey:theClass];
     
@@ -52,10 +52,10 @@ static NSString* stringFromClass(Class theClass)
 static Class classFromString(NSString *string)
 {
     static NSMapTable *map = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        map = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory];
-    });
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     map = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory];
+    // });
     
     Class theClass = [map objectForKey:string];
     
@@ -554,10 +554,10 @@ static void mts_motisInitialization()
 - (NSString*)mts_typeAttributeForKey:(NSString*)key
 {
     static NSMutableDictionary *typeAttributes = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        typeAttributes = [NSMutableDictionary dictionary];
-    });
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     typeAttributes = [NSMutableDictionary dictionary];
+    // });
     
     NSMutableDictionary *classTypeAttributes = typeAttributes[stringFromClass(self.class)];
     if (!classTypeAttributes)
@@ -589,10 +589,10 @@ static void mts_motisInitialization()
 - (BOOL)mts_isClassTypeTypeAttribute:(NSString*)typeAttribute
 {
     static NSMutableDictionary *dictionary = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dictionary = [NSMutableDictionary dictionary];
-    });
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     dictionary = [NSMutableDictionary dictionary];
+    // });
     
     NSNumber *isClassType = dictionary[typeAttribute];
     if (!isClassType)
@@ -607,10 +607,10 @@ static void mts_motisInitialization()
 - (void)mts_getClassName:(out NSString *__autoreleasing*)className protocols:(out NSArray *__autoreleasing*)protocols fromTypeAttribute:(NSString*)typeAttribute
 {
     static NSMutableDictionary *dictionary = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dictionary = [NSMutableDictionary dictionary];
-    });
+    // static dispatch_once_t onceToken;
+    // dispatch_once(&onceToken, ^{
+    //     dictionary = [NSMutableDictionary dictionary];
+    // });
     
     NSArray *array = dictionary[typeAttribute];
     if (array)
